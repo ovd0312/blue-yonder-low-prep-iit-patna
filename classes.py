@@ -43,7 +43,8 @@ class Drone:
     drone_id = 0
     battery_cap = 0
     base_weight = 0
-    payload_cap = 0
+    payload_weight_cap = 0
+    payload_volume_cap = 0
     max_slots = 0
     max_speed = 0
     count = 0
