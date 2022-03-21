@@ -1,105 +1,5 @@
 import pandas as pd
-
-# drones (drone types)
-
-# items (item types)
-
-# demand
-
-ENERGY_COST = 0
-MAX_SPEED = 0
-
-
-class Item:
-    item_id = 0
-    weight = 0
-    l = 0
-    b = 0
-    h = 0
-
-
-class Demand:
-    demand_id = 0
-    WH_id = 0
-    item_id = 0
-    day = 0
-    x = 0
-    y = 0
-    z = 0
-    del_start = ""
-    del_end = ""
-
-
-class DroneType:
-    battery_cap = 0
-    base_weight = 0
-    payload_cap = 0
-    max_slots = 0
-    max_speed = 0
-    count = 0
-    fixed_cost = 0
-    var_cost = 0
-    P = 0
-    Q = 0
-    A = 0
-    B = 0
-    C = 0
-
-
-class Drone:
-    drone_id = 0
-    battery_cap = 0
-    base_weight = 0
-    payload_weight_cap = 0
-    payload_volume_cap = 0
-    max_slots = 0
-    max_speed = 0
-    count = 0
-    fixed_cost = 0
-    var_cost = 0
-    P = 0
-    Q = 0
-    A = 0
-    B = 0
-    C = 0
-    flight_time = {
-        "Day1": 0,
-        "Day2": 0,
-        "Day3": 0,
-    }
-    rest_time = {
-        "Day1": 0,
-        "Day2": 0,
-        "Day3": 0,
-
-    }
-    charging_time = {
-        "Day1": 0,
-        "Day2": 0,
-        "Day3": 0,
-    }
-    maint_cost = {
-        "Day1": 0,
-        "Day2": 0,
-        "Day3": 0,
-    }
-    energy_cost = {
-        "Day1": 0,
-        "Day2": 0,
-        "Day3": 0,
-    }
-
-
-class Recharge:
-    x = 0
-    y = 0
-    z = 0
-    capacity = 0
-    current = 0
-
-
-class Warehouse(Recharge):
-    pass
+import classes as cl
 
 
 def parameter_extractor(path):  # returns (list of drone type objects), WareHouse object, Max Speed, Energy Cost
@@ -107,7 +7,7 @@ def parameter_extractor(path):  # returns (list of drone type objects), WareHous
     data = pd.read_csv(path)
 
     drones = []
-    WH = Warehouse()
+    WH = cl.Warehouse()
 
     MS = 0
     EC = 0
@@ -120,7 +20,7 @@ def parameter_extractor(path):  # returns (list of drone type objects), WareHous
             num_drones = max(num_drones, ord(tp[5]) - 48)
 
     for _ in range(num_drones):
-        drones.append(DroneType())
+        drones.append(cl.DroneType())
 
     for ind in data.index:
         par = data['Parameter_ID'][ind]
