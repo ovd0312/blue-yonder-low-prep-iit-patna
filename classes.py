@@ -115,3 +115,49 @@ class Recharge:
 
 class Warehouse(Recharge):
     pass
+
+
+
+def read_demands(path):
+
+    df=pd.read_csv(path)
+    
+    demands=[]
+    
+    for i in df:
+        demand=Demand()
+    
+        if i=="X":
+            demand.x = df["X"]
+    
+        elif i=="Y":
+            demand.y = df["Y"]
+    
+        elif i=="Z":
+            demand.z = df["Z"]
+    
+        elif i=="DeliveryFrom":
+            demand.del_start=df["DeliveryFrom"]
+    
+        elif i=="DeliveryTo":
+            demand.del_end=df["DeliveryTo"]
+    
+        elif i=="DemandID":
+            for j in range(len(df)):
+                demand.demand_id=int(df["Demand ID"][j][1:])
+    
+        elif i=="WH":
+            for j in range(len(df)):
+                demand.WH_id=int(df["WH"][j][2:])
+    
+        elif i=="Item":
+            for j in range(len(df)):
+                demand.item_id=int(df["Item"][j][5:])
+    
+        elif i=="Day":
+            for j in range(len(df)):
+                demand.item_id=int(df["Item"][j][4:])
+
+        demands.append(demand)
+    
+    return demands
