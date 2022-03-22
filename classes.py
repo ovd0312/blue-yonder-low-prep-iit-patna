@@ -66,6 +66,7 @@ class DroneType:
 class Drone:
     def __init__(self):
         self.drone_id = ''
+        self.drone_type = 0
         self.battery_cap = 0
         self.base_weight = 0
         self.payload_weight_cap = 0
