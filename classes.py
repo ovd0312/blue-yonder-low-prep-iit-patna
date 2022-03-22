@@ -34,7 +34,8 @@ class DroneType:
     def __init__(self):
         self.battery_cap = 0
         self.base_weight = 0
-        self.payload_cap = 0
+        self.payload_weight_cap = 0
+        self.payload_volume_cap = 0
         self.max_slots = 0
         self.max_speed = 0
         self.count = 0
