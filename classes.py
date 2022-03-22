@@ -30,6 +30,21 @@ class Demand:
         self.del_end = 0
 
 
+class Work:
+    def __init__(self, demand_id, day, start_pos, end_pos, start_time, end_time, status, speed, energy_consumed, energy_cost, total_weight):
+        self.demand_id = demand_id
+        self.day = day
+        self.start_pos = start_pos  # [x, y, z]
+        self.end_pos = end_pos  # [x, y, z]
+        self.start_time = start_time
+        self.end_time = end_time
+        self.status = status
+        self.speed = speed
+        self.energy_consumed = energy_consumed  # energy consumed per second
+        self.energy_cost = energy_cost  # per second
+        self.total_weight = total_weight
+
+
 class DroneType:
     def __init__(self):
         self.battery_cap = 0
@@ -50,7 +65,7 @@ class DroneType:
 
 class Drone:
     def __init__(self):
-        self.drone_id = 0
+        self.drone_id = ''
         self.battery_cap = 0
         self.base_weight = 0
         self.payload_weight_cap = 0
@@ -65,6 +80,7 @@ class Drone:
         self.A = 0
         self.B = 0
         self.C = 0
+        self.instruction_set = []   # will contain work objects
         self.flight_time = {
             "Day1": 0,
             "Day2": 0,
