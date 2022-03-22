@@ -30,8 +30,14 @@ def store_demands(demands_file):
             demand.x = row["X"]
             demand.y = row["Y"]
             demand.z = row["Z"]
-            demand.del_start = row["DeliveryFrom"]
-            demand.del_end = row["DeliveryTo"]
+            f_hrs, f_mins, f_secs = row["DeliveryFrom"].split(sep = ':')
+            f_hrs, f_mins, f_secs = int(f_hrs), int(f_mins), int(f_secs)
+            f_secs += (f_hrs-8) * 3600 + f_mins * 60
+            demand.del_start = f_secs
+            t_hrs, t_mins, t_secs = row["DeliveryTo"].split(sep = ':')
+            t_hrs, t_mins, t_secs = int(t_hrs), int(t_mins), int(t_secs)
+            t_secs += (t_hrs-8) * 3600 + t_mins * 60
+            demand.del_end = t_secs
             demands.append(demand)
         
     return demands

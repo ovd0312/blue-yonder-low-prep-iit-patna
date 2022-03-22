@@ -26,8 +26,8 @@ class Demand:
         self.x = 0
         self.y = 0
         self.z = 0
-        self.del_start = ""
-        self.del_end = ""
+        self.del_start = 0
+        self.del_end = 0
 
 
 class DroneType:
