@@ -31,7 +31,8 @@ class Demand:
 
 
 class Work:
-    def __init__(self, demand_id, day, start_pos, end_pos, start_time, end_time, status, speed, energy_consumed, energy_cost, total_weight):
+    def __init__(self, demand_id=0, day=0, start_pos=[], end_pos=[], start_time=0, end_time=0, status=0, speed=0,
+                 energy_consumed=0, energy_cost=0, total_weight=0):
         self.demand_id = demand_id
         self.day = day
         self.start_pos = start_pos  # [x, y, z]
